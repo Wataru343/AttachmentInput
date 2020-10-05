@@ -17,7 +17,7 @@ DEPENDENCIES:
   - RxSwift
 
 SPEC REPOS:
-  https://cdn.cocoapods.org/:
+  trunk:
     - Differentiator
     - RxCocoa
     - RxDataSources
@@ -33,4 +33,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: d06b89a1b5788719f07a3fb9eed94dd8a4865984
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.3

@@ -19,13 +19,8 @@ protocol ImagePickerCellDelegate: class {
 }
 
 class ImagePickerCell: UICollectionViewCell {
-    @IBOutlet var cameraButtonView: UIView!
-    @IBOutlet var cameraButtonIcon: UIImageView!
-    @IBOutlet var cameraButtonLabel: UILabel!
-    @IBOutlet var photoLibraryButtonView: UIView!
-    @IBOutlet var photoLibraryButtonIcon: UIImageView!
-    @IBOutlet var photoLibraryButtonLabel: UILabel!
-
+    
+    @IBOutlet private weak var cameraButton: UIButton!
     private var imagePickerAuthorization = ImagePickerAuthorization()
     private var initialized = false
     private let disposeBag = DisposeBag()
@@ -73,7 +68,6 @@ class ImagePickerCell: UICollectionViewCell {
     }
 
     override func awakeFromNib() {
-        setupText()
         setupDesign()
     }
     
@@ -90,39 +84,12 @@ class ImagePickerCell: UICollectionViewCell {
         }).disposed(by: self.disposeBag)
     }
 
-    private func setupText() {
-        self.cameraButtonLabel.text = String(format: NSLocalizedString("Camera", comment: ""))
-        self.photoLibraryButtonLabel.text = String(format: NSLocalizedString("Photos", comment: ""))
-    }
-
     private func setupDesign() {
-        self.cameraButtonView.backgroundColor = AttachmentInputColor.white
-        self.cameraButtonLabel.textColor = AttachmentInputColor.primaryColor
-        self.cameraButtonLabel.font = AttachmentInputFont.body2
-        self.photoLibraryButtonView.backgroundColor = AttachmentInputColor.white
-        self.photoLibraryButtonLabel.textColor = AttachmentInputColor.primaryColor
-        self.photoLibraryButtonLabel.font = AttachmentInputFont.body2
         self.setupDesignForCameraButton(disable: true)
-        self.setupDesignForPhotosButton(disable: true)
     }
     
     private func setupDesignForCameraButton(disable: Bool) {
-        if disable {
-            self.cameraButtonIcon.tintColor = AttachmentInputColor.borderGray
-            self.cameraButtonLabel.textColor = AttachmentInputColor.borderGray
-            self.cameraButtonIcon.alpha = 0.5
-            self.cameraButtonLabel.alpha = 0.5
-        } else {
-            self.cameraButtonIcon.tintColor = AttachmentInputColor.primaryColor
-            self.cameraButtonLabel.textColor = AttachmentInputColor.primaryColor
-            self.cameraButtonIcon.alpha = 1
-            self.cameraButtonLabel.alpha = 1
-        }
-    }
-    
-    private func setupDesignForPhotosButton(disable: Bool) {
-        self.photoLibraryButtonIcon.tintColor = AttachmentInputColor.primaryColor
-        self.photoLibraryButtonLabel.textColor = AttachmentInputColor.primaryColor
+        self.cameraButton.isEnabled = !disable
     }
 }
 

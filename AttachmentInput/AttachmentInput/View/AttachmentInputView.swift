@@ -21,18 +21,15 @@ class AttachmentInputView: UIView {
     private var logic: AttachmentInputViewLogic?
     private var initialized = false
     private var computedImagePickerCellSize = CGSize()
-    private var computedCameraCellSize = CGSize()
     private var computedPhotoListCellSize = CGSize()
     
     fileprivate enum SectionType {
         case ImagePickerSection(items: [SectionItemType])
-        case CameraSection(items: [SectionItemType])
         case PhotoListSection(items: [SectionItemType])
     }
     
     fileprivate enum SectionItemType {
         case ImagePickerItem
-        case CameraItem
         case PhotoListItem(photo: AttachmentInputPhoto, status: AttachmentInputPhotoStatus)
     }
     
@@ -67,11 +64,6 @@ class AttachmentInputView: UIView {
                 cell.delegate = self
                 cell.setup()
                 return cell
-            case .CameraItem:
-                let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "CameraCell", for: indexPath) as! CameraCell
-                cell.delegate = self
-                cell.setup()
-                return cell
             case .PhotoListItem(let photo, let status):
                 let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
                 cell.setup(photo: photo, status: status)
@@ -81,7 +73,6 @@ class AttachmentInputView: UIView {
         // Add picker control and camera section
         var ret = [SectionType]()
         ret.append(SectionType.ImagePickerSection(items: [SectionItemType.ImagePickerItem]))
-        ret.append(SectionType.CameraSection(items: [SectionItemType.CameraItem]))
         let controllerObservable = Observable.just(ret)
 
         self.checkPhotoAuthorizationStatus { [weak self] authorized in
@@ -116,7 +107,7 @@ class AttachmentInputView: UIView {
     private func checkPhotoAuthorizationStatus(completion: @escaping (_ authorized: Bool) -> Void) {
         let status = PHPhotoLibrary.authorizationStatus()
         switch (status) {
-        case .authorized, .limited:
+        case .authorized:
             completion(true)
         case .denied, .restricted:
             completion(false)
@@ -175,15 +166,9 @@ class AttachmentInputView: UIView {
         let deviceOrientation = UIDevice.current.orientation
         let isLandscape = deviceOrientation.isLandscape
         // ImagePickerCell
-        self.computedImagePickerCellSize = flowLayout.propotionalScaledSize(aspectRatio: (1, 2), numberOfRows: 1)
-        // CameraCell
-        if isLandscape {
-            self.computedCameraCellSize = flowLayout.propotionalScaledSize(aspectRatio: (4, 3), numberOfRows: 1)
-        } else {
-            self.computedCameraCellSize = flowLayout.propotionalScaledSize(aspectRatio: (3, 4), numberOfRows: 1)
-        }
+        self.computedImagePickerCellSize = CGSize(width: flowLayout.preferredItemWidth(forNumberOfColumns: 1), height: 54)
         // PhotoCell
-        self.computedPhotoListCellSize = flowLayout.propotionalScaledSize(aspectRatio: (1, 1), numberOfRows: 2)
+        self.computedPhotoListCellSize = flowLayout.propotionalScaledSize(aspectRatio: (1, 1), numberOfColumns: isLandscape ? 4 : 3)
     }
 }
 
@@ -249,9 +234,6 @@ extension AttachmentInputView: UICollectionViewDelegateFlowLayout {
             // ImagePickerCell
             return self.computedImagePickerCellSize
         } else if indexPath.section == 1 {
-            // CameraCell
-            return self.computedCameraCellSize
-        } else if indexPath.section == 2 {
             // PhotoCell
             return self.computedPhotoListCellSize
         }
@@ -266,8 +248,6 @@ extension AttachmentInputView.SectionType: SectionModelType {
         switch self {
         case .ImagePickerSection(items: let items):
             return items.map {$0}
-        case .CameraSection(items: let items):
-            return items.map {$0}
         case .PhotoListSection(items: let items):
             return items.map {$0}
         }
@@ -277,8 +257,6 @@ extension AttachmentInputView.SectionType: SectionModelType {
         switch original {
         case .ImagePickerSection:
             self = .ImagePickerSection(items: items)
-        case .CameraSection:
-            self = .CameraSection(items: items)
         case .PhotoListSection:
             self = .PhotoListSection(items: items)
         }

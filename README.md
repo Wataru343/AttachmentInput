@@ -2,7 +2,7 @@
 ===
 
 AttachmentInput is a photo attachment keyboard.It is similar to the keyboard for photo attachment of iOS 11 Messenger.  
-<img src="https://github.com/cybozu/AttachmentInput/raw/master/AttachmentInput.gif" width="380px"/>
+<img src="https://github.com/mobile-davinder/AttachmentInput/raw/master/AttachmentInput.gif" width="380px"/>
 
 ##  🍱 Supported Features
 * Shoot a photo on the keyboard
@@ -12,7 +12,7 @@ AttachmentInput is a photo attachment keyboard.It is similar to the keyboard for
 * Compress image/video
 * Get the image/video file name, file size, thumbnail image
 * Provides custom features
-  * see [AttachmentInputConfig](https://github.com/cybozu/AttachmentInput/blob/master/AttachmentInput/AttachmentInput/AttachmentInputConfiguration.swift)
+  * see [AttachmentInputConfig](https://github.com/mobile-davinder/AttachmentInput/blob/master/AttachmentInput/AttachmentInput/AttachmentInputConfiguration.swift)
 
 ## ⚓  Requirements
 - Written in Swift 5
@@ -22,7 +22,7 @@ AttachmentInput is a photo attachment keyboard.It is similar to the keyboard for
 ## 🏃 Install
 Add this to your CocoaPods Podfile.
 ```
-pod 'AttachmentInput'
+pod 'AttachmentInput', :git => 'https://github.com/mobile-davinder/AttachmentInput.git'
 ```
 ## 🛠️ Usage
 1. Add privacy properties in `info.plist` with a usage description

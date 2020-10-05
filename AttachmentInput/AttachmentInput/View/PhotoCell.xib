@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,23 +26,32 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="URG-Ym-rP2">
-                        <rect key="frame" x="95" y="95" width="20" height="20"/>
+                        <rect key="frame" x="95" y="5" width="20" height="20"/>
                     </activityIndicatorView>
                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thumbMovie" translatesAutoresizingMaskIntoConstraints="NO" id="CRy-PB-hJS">
-                        <rect key="frame" x="5" y="95" width="20" height="20"/>
+                        <rect key="frame" x="5" y="5" width="20" height="20"/>
                         <accessibility key="accessibilityConfiguration" identifier="ImageView_TileMovieIcon_AttachmentInput"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="20" id="LlR-U7-3cP"/>
                             <constraint firstAttribute="height" constant="20" id="g6Y-Fa-Nwc"/>
                         </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thumbCheck" translatesAutoresizingMaskIntoConstraints="NO" id="XOa-i2-gN7">
-                        <rect key="frame" x="95" y="95" width="20" height="20"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thumbCheck" translatesAutoresizingMaskIntoConstraints="NO" id="XOa-i2-gN7">
+                        <rect key="frame" x="94" y="4" width="22" height="22"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <accessibility key="accessibilityConfiguration" identifier="ImageView_TileCheckIcon_AttachmentInput"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="20" id="8Ag-q4-OtV"/>
-                            <constraint firstAttribute="width" constant="20" id="ed1-gr-WcW"/>
+                            <constraint firstAttribute="height" constant="22" id="8Ag-q4-OtV"/>
+                            <constraint firstAttribute="width" constant="22" id="ed1-gr-WcW"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="11"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                <integer key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iR7-T9-fbS">
                         <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
@@ -54,35 +61,36 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thumbError" translatesAutoresizingMaskIntoConstraints="NO" id="LJ1-XE-iaG" userLabel="disable icon">
-                                <rect key="frame" x="95" y="95" width="20" height="20"/>
+                                <rect key="frame" x="94" y="4" width="22" height="22"/>
                                 <accessibility key="accessibilityConfiguration" identifier="ImageView_TileDisableIcon_AttachmentInput"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="SmM-3I-YTX"/>
-                                    <constraint firstAttribute="width" constant="20" id="TVN-a8-Uq1"/>
+                                    <constraint firstAttribute="height" constant="22" id="SmM-3I-YTX"/>
+                                    <constraint firstAttribute="width" constant="22" id="TVN-a8-Uq1"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Gu5-Dc-oIz" secondAttribute="trailing" id="06M-Qm-LLd"/>
-                            <constraint firstAttribute="bottom" secondItem="LJ1-XE-iaG" secondAttribute="bottom" constant="5" id="KJM-7A-hjc"/>
+                            <constraint firstItem="LJ1-XE-iaG" firstAttribute="top" secondItem="iR7-T9-fbS" secondAttribute="top" constant="4" id="KJM-7A-hjc"/>
                             <constraint firstItem="Gu5-Dc-oIz" firstAttribute="leading" secondItem="iR7-T9-fbS" secondAttribute="leading" id="LsF-6f-kel"/>
                             <constraint firstItem="Gu5-Dc-oIz" firstAttribute="top" secondItem="iR7-T9-fbS" secondAttribute="top" id="QNR-Xg-zDb"/>
                             <constraint firstAttribute="bottom" secondItem="Gu5-Dc-oIz" secondAttribute="bottom" id="vL0-42-hXI"/>
-                            <constraint firstAttribute="trailing" secondItem="LJ1-XE-iaG" secondAttribute="trailing" constant="5" id="yQN-Py-qRP"/>
+                            <constraint firstAttribute="trailing" secondItem="LJ1-XE-iaG" secondAttribute="trailing" constant="4" id="yQN-Py-qRP"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="XOa-i2-gN7" secondAttribute="trailing" constant="5" id="39y-VQ-u38"/>
-                <constraint firstAttribute="bottom" secondItem="XOa-i2-gN7" secondAttribute="bottom" constant="5" id="7JJ-1k-ohL"/>
+                <constraint firstAttribute="trailing" secondItem="XOa-i2-gN7" secondAttribute="trailing" constant="4" id="39y-VQ-u38"/>
+                <constraint firstItem="XOa-i2-gN7" firstAttribute="top" secondItem="6EN-Wb-GcM" secondAttribute="top" constant="4" id="7JJ-1k-ohL"/>
                 <constraint firstItem="Vm8-oP-QTU" firstAttribute="top" secondItem="6EN-Wb-GcM" secondAttribute="top" id="A6q-8A-rDi"/>
                 <constraint firstItem="CRy-PB-hJS" firstAttribute="leading" secondItem="6EN-Wb-GcM" secondAttribute="leading" constant="5" id="JW3-1t-Cp7"/>
                 <constraint firstAttribute="bottom" secondItem="iR7-T9-fbS" secondAttribute="bottom" id="JXw-EJ-4Nn"/>
                 <constraint firstItem="iR7-T9-fbS" firstAttribute="top" secondItem="6EN-Wb-GcM" secondAttribute="top" id="OHE-Sk-zC8"/>
-                <constraint firstAttribute="bottom" secondItem="URG-Ym-rP2" secondAttribute="bottom" constant="5" id="SE8-GR-Kay"/>
-                <constraint firstAttribute="bottom" secondItem="CRy-PB-hJS" secondAttribute="bottom" constant="5" id="TiA-cL-M0g"/>
+                <constraint firstItem="URG-Ym-rP2" firstAttribute="top" secondItem="6EN-Wb-GcM" secondAttribute="top" constant="5" id="SE8-GR-Kay"/>
+                <constraint firstItem="CRy-PB-hJS" firstAttribute="top" secondItem="6EN-Wb-GcM" secondAttribute="top" constant="5" id="TiA-cL-M0g"/>
                 <constraint firstAttribute="trailing" secondItem="mvw-jy-bMB" secondAttribute="trailing" id="Vdr-ZE-XfE"/>
                 <constraint firstAttribute="trailing" secondItem="Vm8-oP-QTU" secondAttribute="trailing" id="aSG-Id-cF9"/>
                 <constraint firstAttribute="bottom" secondItem="Vm8-oP-QTU" secondAttribute="bottom" id="dyJ-Gx-2Kv"/>
@@ -96,6 +104,11 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="UOp-ZH-Eu2"/>
             <size key="customSize" width="120" height="120"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                    <integer key="value" value="4"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="checkIconView" destination="XOa-i2-gN7" id="2dR-GD-tYF"/>
                 <outlet property="disableView" destination="iR7-T9-fbS" id="bGW-ez-yFC"/>
@@ -104,10 +117,11 @@
                 <outlet property="movieIconView" destination="CRy-PB-hJS" id="c7P-ad-XNf"/>
                 <outlet property="thumbnailView" destination="mvw-jy-bMB" id="lyf-32-Awq"/>
             </connections>
+            <point key="canvasLocation" x="133" y="155"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="thumbCheck" width="20" height="20"/>
+        <image name="thumbCheck" width="21" height="20"/>
         <image name="thumbError" width="20" height="20"/>
         <image name="thumbMovie" width="20" height="20"/>
     </resources>

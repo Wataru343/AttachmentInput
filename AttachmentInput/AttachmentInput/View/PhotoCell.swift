@@ -71,6 +71,8 @@ class PhotoCell: UICollectionViewCell {
         layer.endPoint = CGPoint(x: 0.5, y: 1.0)
         layer.frame = view.bounds
         view.layer.addSublayer(layer)
+        
+        checkIconView.layer.borderColor = UIColor.white.cgColor
     }
     
     override func prepareForReuse() {
