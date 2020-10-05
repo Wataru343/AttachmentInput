@@ -168,7 +168,7 @@ class AttachmentInputView: UIView {
         // ImagePickerCell
         self.computedImagePickerCellSize = CGSize(width: flowLayout.preferredItemWidth(forNumberOfColumns: 1), height: 54)
         // PhotoCell
-        self.computedPhotoListCellSize = flowLayout.propotionalScaledSize(aspectRatio: (1, 1), numberOfColumns: isLandscape ? 4 : 3)
+        self.computedPhotoListCellSize = flowLayout.propotionalScaledSize(aspectRatio: (1, 1), numberOfColumns: (UIDevice.current.userInterfaceIdiom == .pad ? 4 : 3) + (isLandscape ? 1 : 0))
     }
 }
 
