@@ -22,7 +22,7 @@ class PhotoCell: UICollectionViewCell {
     private var disposeBag = DisposeBag()
     
     override func awakeFromNib() {
-        self.setGradation(view: self.gradationView)
+        checkIconView.layer.borderColor = UIColor.white.cgColor
     }
     
     func setup(photo: AttachmentInputPhoto, status: AttachmentInputPhotoStatus) {
@@ -59,20 +59,6 @@ class PhotoCell: UICollectionViewCell {
                 return true
             }
         }.bind(to: self.indicatorView.rx.isHidden).disposed(by: self.disposeBag)
-    }
-    
-    private func setGradation(view: UIView) {
-        let startColor = UIColor(white: 0, alpha: 0).cgColor
-        let endColor = UIColor(white: 0, alpha: 0.8).cgColor
-    
-        let layer = CAGradientLayer()
-        layer.colors = [startColor, endColor]
-        layer.startPoint = CGPoint(x: 0.5, y: 0.6)
-        layer.endPoint = CGPoint(x: 0.5, y: 1.0)
-        layer.frame = view.bounds
-        view.layer.addSublayer(layer)
-        
-        checkIconView.layer.borderColor = UIColor.white.cgColor
     }
     
     override func prepareForReuse() {
