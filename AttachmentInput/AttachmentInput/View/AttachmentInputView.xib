@@ -14,8 +14,15 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OsI-wH-R0N" userLabel="SeperatorView">
+                    <rect key="frame" x="0.0" y="-44" width="375" height="1"/>
+                    <color key="backgroundColor" red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="deviceRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="FdI-gE-xv8"/>
+                    </constraints>
+                </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="HDZ-nf-dmJ">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="-43" width="375" height="710"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="7" minimumInteritemSpacing="10" id="skb-md-En4">
                         <size key="itemSize" width="50" height="50"/>
@@ -24,20 +31,13 @@
                         <inset key="sectionInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OsI-wH-R0N">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
-                    <color key="backgroundColor" red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="deviceRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="1" id="FdI-gE-xv8"/>
-                    </constraints>
-                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="HDZ-nf-dmJ" secondAttribute="bottom" id="3OC-uH-XzF"/>
-                <constraint firstItem="HDZ-nf-dmJ" firstAttribute="top" secondItem="Exs-RC-Wn0" secondAttribute="top" id="OeK-jc-Cmf"/>
+                <constraint firstItem="HDZ-nf-dmJ" firstAttribute="top" secondItem="OsI-wH-R0N" secondAttribute="bottom" id="OeK-jc-Cmf"/>
                 <constraint firstAttribute="trailing" secondItem="OsI-wH-R0N" secondAttribute="trailing" id="SOL-Xc-TPV"/>
-                <constraint firstItem="OsI-wH-R0N" firstAttribute="top" secondItem="Exs-RC-Wn0" secondAttribute="top" id="Zh3-6D-IVA"/>
+                <constraint firstItem="OsI-wH-R0N" firstAttribute="top" secondItem="Exs-RC-Wn0" secondAttribute="top" constant="-44" id="Zh3-6D-IVA"/>
                 <constraint firstItem="HDZ-nf-dmJ" firstAttribute="leading" secondItem="mbb-pm-d4d" secondAttribute="leading" id="tAW-27-Axs"/>
                 <constraint firstItem="HDZ-nf-dmJ" firstAttribute="trailing" secondItem="mbb-pm-d4d" secondAttribute="trailing" id="ue1-ZA-mZS"/>
                 <constraint firstItem="OsI-wH-R0N" firstAttribute="leading" secondItem="Exs-RC-Wn0" secondAttribute="leading" id="vbc-iD-R8s"/>

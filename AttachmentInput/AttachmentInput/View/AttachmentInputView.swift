@@ -43,6 +43,16 @@ class AttachmentInputView: UIView {
     }
 
     private var configuration: AttachmentInputConfiguration!
+    
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+
+        let translatedPoint = collectionView.convert(point, from: self)
+
+        if (collectionView.bounds.contains(translatedPoint)) {
+            return collectionView.hitTest(translatedPoint, with: event)
+        }
+        return super.hitTest(point, with: event)
+    }
 
     static func createAttachmentInputView(configuration: AttachmentInputConfiguration) -> AttachmentInputView {
         let attachmentInputView = Bundle(for: self).loadNibNamed("AttachmentInputView", owner: self, options: nil)?.first as! AttachmentInputView
