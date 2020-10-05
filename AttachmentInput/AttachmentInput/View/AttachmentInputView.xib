@@ -46,6 +46,7 @@
             <viewLayoutGuide key="safeArea" id="mbb-pm-d4d"/>
             <connections>
                 <outlet property="collectionView" destination="HDZ-nf-dmJ" id="tai-EV-ddx"/>
+                <outlet property="topConstraint" destination="Zh3-6D-IVA" id="8Nd-mi-QY9"/>
             </connections>
             <point key="canvasLocation" x="132" y="155"/>
         </view>

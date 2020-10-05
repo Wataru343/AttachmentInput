@@ -15,6 +15,7 @@ import MobileCoreServices
 
 class AttachmentInputView: UIView {
     @IBOutlet private var collectionView: UICollectionView!
+    @IBOutlet private var topConstraint: NSLayoutConstraint!
     
     private var dataSource: RxCollectionViewSectionedReloadDataSource<SectionType>!
     private let disposeBag = DisposeBag()
@@ -112,6 +113,9 @@ class AttachmentInputView: UIView {
                 }
             }
         }).disposed(by: self.disposeBag)
+        
+        // Top Constraint
+        topConstraint.constant = UIDevice.current.userInterfaceIdiom == .pad ? -55 : -45
     }
 
     private func checkPhotoAuthorizationStatus(completion: @escaping (_ authorized: Bool) -> Void) {
