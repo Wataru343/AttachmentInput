@@ -4,6 +4,8 @@ workspace 'AttachmentInput'
 
 target 'AttachmentInput' do
   project 'AttachmentInput/AttachmentInput.xcodeproj'
+  pod 'RxSwift'
+  pod 'RxCocoa'
   pod 'RxDataSources'
 end
 
