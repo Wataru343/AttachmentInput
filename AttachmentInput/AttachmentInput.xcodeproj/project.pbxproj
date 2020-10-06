@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84D17AF7252CF83500621984 /* AVAssetExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D17AF6252CF83500621984 /* AVAssetExtension.swift */; };
+		84D17AF9252CFDEA00621984 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D17AF8252CFDEA00621984 /* UIImageExtension.swift */; };
 		B09E6740EDE6DEE2A9F267AE /* Pods_AttachmentInput.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F6F54CCF4A96C4F4E409804 /* Pods_AttachmentInput.framework */; };
 		D916765E211AE6CF003D526A /* AttachmentInput.h in Headers */ = {isa = PBXBuildFile; fileRef = D916765C211AE6CF003D526A /* AttachmentInput.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D9CDD640218024AC00B875DC /* CameraCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9CDD63F218024AC00B875DC /* CameraCell.xib */; };
@@ -39,6 +41,8 @@
 /* Begin PBXFileReference section */
 		561C397A64B554FAC0CAD745 /* Pods-AttachmentInput.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AttachmentInput.release.xcconfig"; path = "../Pods/Target Support Files/Pods-AttachmentInput/Pods-AttachmentInput.release.xcconfig"; sourceTree = "<group>"; };
 		5C4C91DE4A77C8FC24697EF3 /* Pods-AttachmentInput.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AttachmentInput.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-AttachmentInput/Pods-AttachmentInput.debug.xcconfig"; sourceTree = "<group>"; };
+		84D17AF6252CF83500621984 /* AVAssetExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVAssetExtension.swift; sourceTree = "<group>"; };
+		84D17AF8252CFDEA00621984 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		9F6F54CCF4A96C4F4E409804 /* Pods_AttachmentInput.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AttachmentInput.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9167659211AE6CF003D526A /* AttachmentInput.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AttachmentInput.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D916765C211AE6CF003D526A /* AttachmentInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttachmentInput.h; sourceTree = "<group>"; };
@@ -152,6 +156,8 @@
 				D9D4A4C2211D06D10075E745 /* UICollectionViewFlowLayoutExtension.swift */,
 				D9D4A4C4211D06D50075E745 /* BehaviorSubjectExtension.swift */,
 				D9D4A4C6211D06D90075E745 /* ObservableTypeExtension.swift */,
+				84D17AF6252CF83500621984 /* AVAssetExtension.swift */,
+				84D17AF8252CFDEA00621984 /* UIImageExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -292,6 +298,7 @@
 			files = (
 				D9CDD64A21802F8A00B875DC /* AttachmentInputView.swift in Sources */,
 				D9D4A4FC212142000075E745 /* AttachmentInputColor.swift in Sources */,
+				84D17AF9252CFDEA00621984 /* UIImageExtension.swift in Sources */,
 				D9CDD6532180ACF200B875DC /* ImagePickerAuthorization.swift in Sources */,
 				D9D4A4D9211D070D0075E745 /* AttachmentInputViewLogic.swift in Sources */,
 				D9D4A4D8211D070D0075E745 /* AttachmentInputPhoto.swift in Sources */,
@@ -303,6 +310,7 @@
 				D9ECDFC8213E760E00C87D97 /* AttachmentInput.swift in Sources */,
 				D9D4A4C5211D06D50075E745 /* BehaviorSubjectExtension.swift in Sources */,
 				D9D4A4DC211D070D0075E745 /* ImagePickerCell.swift in Sources */,
+				84D17AF7252CF83500621984 /* AVAssetExtension.swift in Sources */,
 				D9D4A4C7211D06D90075E745 /* ObservableTypeExtension.swift in Sources */,
 				D9ECDFCE2140F3C500C87D97 /* AttachmentInputConfiguration.swift in Sources */,
 				D9D4A4DD211D070D0075E745 /* PhotoCell.swift in Sources */,

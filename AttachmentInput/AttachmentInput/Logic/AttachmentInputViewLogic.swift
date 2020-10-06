@@ -114,7 +114,16 @@ class AttachmentInputViewLogic {
                     if let videoUrl = videoUrl {
                         // Since the video is compressed on the premise that the video is called from the imagePickerController, there is no need to compress it
                         let fileSize = AttachmentInputUtil.getSizeFromFileUrl(fileUrl: videoUrl) ?? 0
-                        self?.inputMedia(url: videoUrl, fileName: properties.filename, fileSize: fileSize, fileId: photo.identifier, imageThumbnail: nil)
+                        // get thumbnail
+                        var disposable: Disposable?
+                        disposable = photo.loadThumbnail(photoSize: self?.configuration.thumbnailSize ?? CGSize(width: 100, height: 100), resizeMode: .exact).subscribe(onNext: { [weak self] imageThumbnail in
+                            self?.inputMedia(url: videoUrl, fileName: properties.filename, fileSize: fileSize, fileId: photo.identifier, imageThumbnail: imageThumbnail)
+                            status.input.onNext(.selected)
+                            disposable?.dispose()
+                        }, onError: { error in
+                            self?.inputMedia(url: videoUrl, fileName: properties.filename, fileSize: fileSize, fileId: photo.identifier, imageThumbnail: nil)
+                            status.input.onNext(.selected)
+                        })
                     } else {
                         self?.addImageAfterFetchAndCompress(photo: photo, fileName: properties.filename, status: status)
                     }
@@ -186,8 +195,17 @@ class AttachmentInputViewLogic {
                             status.input.onNext(.unSelected)
                             return
                         }
-                        self?.inputMedia(url: fileUrl, fileName: fileName, fileSize: fileSize, fileId: photo.identifier, imageThumbnail: nil)
-                        status.input.onNext(.selected)
+
+                        // get thumbnail
+                        var disposable: Disposable?
+                        disposable = photo.loadThumbnail(photoSize: self?.configuration.thumbnailSize ?? CGSize(width: 100, height: 100), resizeMode: .exact).subscribe(onNext: { [weak self] imageThumbnail in
+                            self?.inputMedia(url: fileUrl, fileName: fileName, fileSize: fileSize, fileId: photo.identifier, imageThumbnail: imageThumbnail)
+                            status.input.onNext(.selected)
+                            disposable?.dispose()
+                        }, onError: { error in
+                            self?.inputMedia(url: fileUrl, fileName: fileName, fileSize: fileSize, fileId: photo.identifier, imageThumbnail: nil)
+                            status.input.onNext(.selected)
+                        })
                     } else {
                         self?.onError(error: AttachmentInputError.compressVideoFailed)
                         status.input.onNext(.unSelected)
@@ -216,7 +234,7 @@ class AttachmentInputViewLogic {
             }
         }
         self.imageManager.requestImageData(for: photo.asset, options: options, resultHandler: { (imageData, _, _, _) in
-            if let imageData = imageData, let image = UIImage(data: imageData) {
+            if let imageData = imageData, let image = UIImage(data: imageData)?.fixedOrientation() {
                 // compress image
                 if let compressedData = AttachmentInputUtil.compressImage(image: image, photoQuality: self.configuration.photoQuality) {
                     let fileSize = Int64(compressedData.count)
