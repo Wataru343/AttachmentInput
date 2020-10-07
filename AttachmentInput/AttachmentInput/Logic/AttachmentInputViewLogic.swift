@@ -125,6 +125,7 @@ class AttachmentInputViewLogic {
                         }, onError: { error in
                             self?.inputMedia(url: videoUrl, fileName: properties.filename, fileSize: fileSize, fileId: photo.identifier, imageThumbnail: nil)
                             status.input.onNext(.selected)
+                            disposable?.dispose()
                         })
                     } else {
                         self?.addImageAfterFetchAndCompress(photo: photo, fileName: properties.filename, status: status)
@@ -207,6 +208,7 @@ class AttachmentInputViewLogic {
                         }, onError: { error in
                             self?.inputMedia(url: fileUrl, fileName: fileName, fileSize: fileSize, fileId: photo.identifier, imageThumbnail: nil)
                             status.input.onNext(.selected)
+                            disposable?.dispose()
                         })
                     } else {
                         self?.onError(error: AttachmentInputError.compressVideoFailed)
