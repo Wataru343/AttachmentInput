@@ -86,14 +86,16 @@ class AttachmentInputViewLogic {
 
     // Create a file name and add a video
     func addNewVideo(url: URL) {
-        let fileSize = AttachmentInputUtil.getSizeFromFileUrl(fileUrl: url) ?? 0
-        if self.configuration.fileSizeLimit <= fileSize {
-            self.onError(error: AttachmentInputError.overLimitSize)
-            return
+        AVAsset(url: url).generateThumbnail { imageThumbnail in
+            let fileSize = AttachmentInputUtil.getSizeFromFileUrl(fileUrl: url) ?? 0
+            if self.configuration.fileSizeLimit <= fileSize {
+                self.onError(error: AttachmentInputError.overLimitSize)
+                return
+            }
+            let fileName = "video " + AttachmentInputUtil.datetimeForDisplay(from: Date()) + ".MOV"
+            let id = NSUUID().uuidString
+            self.inputMedia(url: url, fileName: fileName, fileSize: fileSize, fileId: id, imageThumbnail: imageThumbnail)
         }
-        let fileName = "video " + AttachmentInputUtil.datetimeForDisplay(from: Date()) + ".MOV"
-        let id = NSUUID().uuidString
-        self.inputMedia(url: url, fileName: fileName, fileSize: fileSize, fileId: id, imageThumbnail: nil)
     }
 
     func onSelectPickerMedia(phAsset: PHAsset, videoUrl: URL?) {
