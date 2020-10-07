@@ -54,11 +54,11 @@ class PhotoCell: UICollectionViewCell {
         status.output.distinctUntilChanged().map { inputStatus in
             switch inputStatus {
             case .compressing, .downloading:
-                return false
-            default:
                 return true
+            default:
+                return false
             }
-        }.bind(to: self.indicatorView.rx.isHidden).disposed(by: self.disposeBag)
+        }.bind(to: self.indicatorView.rx.isAnimating).disposed(by: self.disposeBag)
     }
     
     override func prepareForReuse() {

@@ -120,11 +120,9 @@ class AttachmentInputViewLogic {
                         var disposable: Disposable?
                         disposable = photo.loadThumbnail(photoSize: self?.configuration.thumbnailSize ?? CGSize(width: 100, height: 100), resizeMode: .exact).subscribe(onNext: { [weak self] imageThumbnail in
                             self?.inputMedia(url: videoUrl, fileName: properties.filename, fileSize: fileSize, fileId: photo.identifier, imageThumbnail: imageThumbnail)
-                            status.input.onNext(.selected)
                             disposable?.dispose()
                         }, onError: { error in
                             self?.inputMedia(url: videoUrl, fileName: properties.filename, fileSize: fileSize, fileId: photo.identifier, imageThumbnail: nil)
-                            status.input.onNext(.selected)
                             disposable?.dispose()
                         })
                     } else {
@@ -133,6 +131,21 @@ class AttachmentInputViewLogic {
                 } else {
                     self?.statusDictionary[photo.identifier] = AttachmentInputPhotoStatus()
                     self?.statusDictionary[photo.identifier]?.input.onNext(.selected)
+                    
+                    if let videoUrl = videoUrl {
+                        let fileSize = AttachmentInputUtil.getSizeFromFileUrl(fileUrl: videoUrl) ?? 0
+                        // get thumbnail
+                        var disposable: Disposable?
+                        disposable = photo.loadThumbnail(photoSize: self?.configuration.thumbnailSize ?? CGSize(width: 100, height: 100), resizeMode: .exact).subscribe(onNext: { [weak self] imageThumbnail in
+                            self?.inputMedia(url: videoUrl, fileName: properties.filename, fileSize: fileSize, fileId: photo.identifier, imageThumbnail: imageThumbnail)
+                            disposable?.dispose()
+                        }, onError: { error in
+                            self?.inputMedia(url: videoUrl, fileName: properties.filename, fileSize: fileSize, fileId: photo.identifier, imageThumbnail: nil)
+                            disposable?.dispose()
+                        })
+                    } else if let status = self?.statusDictionary[photo.identifier] {
+                        self?.addImageAfterFetchAndCompress(photo: photo, fileName: properties.filename, status: status)
+                    }
                 }
                 }, onError: { [weak self] error in
                     self?.onError(error: error)

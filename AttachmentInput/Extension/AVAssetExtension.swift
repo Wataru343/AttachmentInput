@@ -15,9 +15,9 @@ extension AVAsset {
             let imageGenerator = AVAssetImageGenerator(asset: self)
             let time = CMTime(seconds: 0.0, preferredTimescale: 600)
             let times = [NSValue(time: time)]
-            imageGenerator.generateCGImagesAsynchronously(forTimes: times, completionHandler: { _, image, _, _, _ in
-                if let image = image {
-                    completion(UIImage(cgImage: image).jpegData(compressionQuality: 0.3) as Data?)
+            imageGenerator.generateCGImagesAsynchronously(forTimes: times, completionHandler: { _, cgImage, _, _, _ in
+                if let cgImage = cgImage, let image = UIImage(cgImage: cgImage).fixedOrientation() {
+                    completion(image.jpegData(compressionQuality: 0.3) as Data?)
                 } else {
                     completion(nil)
                 }
