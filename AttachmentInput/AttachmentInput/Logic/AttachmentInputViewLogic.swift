@@ -58,12 +58,12 @@ class AttachmentInputViewLogic {
 
     func addNewImage(data: Data) {
         if let image = UIImage(data: data) {
-            self.addNewImage(image: image, data: data)
+            self.addNewImageAfterCompress(image: image)
         }
     }
 
     func addNewImageAfterCompress(image: UIImage) {
-        if let imageData = AttachmentInputUtil.compressImage(image: image, photoQuality: self.configuration.photoQuality) {
+        if let image = image.fixedOrientation(), let imageData = AttachmentInputUtil.compressImage(image: image, photoQuality: self.configuration.photoQuality) {
             self.addNewImage(image: image, data: imageData)
         }
     }
