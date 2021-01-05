@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/mobile-davinder/AttachmentInput.git", :tag => s.version }
   s.source_files = "AttachmentInput/**/*.{generated.swift,swift}"
   s.resources    = "AttachmentInput/**/*.{xib,xcassets,strings}"
-  s.dependency "RxSwift" = "5.1.1"
-  s.dependency "RxCocoa" = "5.1.1"
-  s.dependency "RxDataSources" = "4.0.1"
+  s.dependency "RxSwift" "5.1.1"
+  s.dependency "RxCocoa" "5.1.1"
+  s.dependency "RxDataSources" "4.0.1"
 end
