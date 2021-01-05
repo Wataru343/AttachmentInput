@@ -4,16 +4,16 @@ workspace 'AttachmentInput'
 
 target 'AttachmentInput' do
   project 'AttachmentInput/AttachmentInput.xcodeproj'
-  pod 'RxSwift'
-  pod 'RxCocoa'
-  pod 'RxDataSources'
+  pod 'RxSwift', '6.0.0'
+  pod 'RxCocoa', '6.0.0'
+  pod 'RxDataSources', '5.0.0'
 end
 
 target 'Example' do
   project 'Example/Example.xcodeproj'
-  pod 'RxSwift'
-  pod 'RxCocoa'
-  pod 'RxDataSources'
+  pod 'RxSwift', '6.0.0'
+  pod 'RxCocoa', '6.0.0'
+  pod 'RxDataSources', '5.0.0'
 end
 
 post_install do |lib|
