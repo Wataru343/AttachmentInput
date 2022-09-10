@@ -4,15 +4,15 @@ workspace 'AttachmentInput'
 
 target 'AttachmentInput' do
   project 'AttachmentInput/AttachmentInput.xcodeproj'
-  pod 'RxSwift', '5.1.1'
-  pod 'RxCocoa', '5.1.1'
+  pod 'RxSwift', '5.1.3'
+  pod 'RxCocoa', '5.1.3'
   pod 'RxDataSources', '4.0.1'
 end
 
 target 'Example' do
   project 'Example/Example.xcodeproj'
-  pod 'RxSwift', '5.1.1'
-  pod 'RxCocoa', '5.1.1'
+  pod 'RxSwift', '5.1.3'
+  pod 'RxCocoa', '5.1.3'
   pod 'RxDataSources', '4.0.1'
 end
 
